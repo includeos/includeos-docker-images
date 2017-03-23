@@ -1,0 +1,33 @@
+FROM ubuntu:xenial
+
+RUN apt-get update && apt-get -y install \
+    git \
+    lsb-release \
+    net-tools \
+    sudo \
+    wget \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN useradd --create-home -s /bin/bash ubuntu
+RUN adduser ubuntu sudo
+RUN echo -n 'ubuntu:ubuntu' | chpasswd
+
+# Enable passwordless sudo for users under the "sudo" group
+RUN sed -i.bkp -e \
+      's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' \
+      /etc/sudoers
+
+USER ubuntu
+
+RUN cd ~ && pwd && \
+  git clone https://github.com/hioa-cs/IncludeOS.git && \
+  cd IncludeOS && \
+  git checkout 15bb0ab61b59252782d9aa5fe29df5115208e638 && \
+  git submodule update --init --recursive && \
+  git fetch --tags
+
+COPY ./patches/install.sh /home/ubuntu/IncludeOS/install.sh
+
+RUN cd ~ && pwd && \
+  cd IncludeOS && \
+  sudo ./install.sh

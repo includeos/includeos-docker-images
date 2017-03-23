@@ -1,0 +1,9 @@
+FROM includeos/includeos-common:0.10.0.0 
+
+VOLUME /service
+WORKDIR /service
+
+CMD cd build && \
+  export CC=clang-3.8 && export CXX=clang++-3.8 && \
+  cmake .. && \
+  make
