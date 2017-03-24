@@ -1,0 +1,14 @@
+FROM includeos/includeos-common:0.10.0.0
+
+USER root
+
+RUN apt-get update && apt-get -y install \
+  dosfstools \
+  grub-pc
+
+USER ubuntu
+
+VOLUME /service
+WORKDIR /service
+
+ENTRYPOINT ["/usr/local/includeos/scripts/grubify.sh"]
