@@ -1,5 +1,7 @@
 # Docker images
 
+These Docker images let you try out building [IncludeOS](https://github.com/hioa-cs/IncludeOS/) unikernels without having to install the development environment locally on your machine.
+
 ## Building the IncludeOS Docker images
 
 ```
