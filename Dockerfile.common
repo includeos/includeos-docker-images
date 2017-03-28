@@ -30,4 +30,4 @@ COPY ./patches/install.sh /home/ubuntu/IncludeOS/install.sh
 
 RUN cd ~ && pwd && \
   cd IncludeOS && \
-  sudo ./install.sh
+  INCLUDEOS_PREFIX=/home/ubuntu/IncludeOS_install ./install.sh
