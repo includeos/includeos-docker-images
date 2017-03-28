@@ -15,7 +15,7 @@ $ docker build -t includeos/includeos-grubify:0.10.0.1 -f Dockerfile.grubify .
 
 ```
 $ cd <my-super-cool-service>
-$ mkdir build &6 cd build
+$ mkdir build && cd build
 $ docker run --rm -v $(dirname $PWD):/service includeos/includeos-build:0.10.0.1
 ```
 
