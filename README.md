@@ -5,10 +5,10 @@ These Docker images let you try out building [IncludeOS](https://github.com/hioa
 ## Building the IncludeOS Docker images
 
 ```
-$ docker build -t includeos/includeos-common:0.10.0.0 -f Dockerfile.common .
-$ docker build -t includeos/includeos-build:0.10.0.0 -f Dockerfile.build .
-$ docker build -t includeos/includeos-qemu:0.10.0.0 -f Dockerfile.qemu .
-$ docker build -t includeos/includeos-grubify:0.10.0.0 -f Dockerfile.grubify .
+$ docker build -t includeos/includeos-common:0.10.0.1 -f Dockerfile.common .
+$ docker build -t includeos/includeos-build:0.10.0.1 -f Dockerfile.build .
+$ docker build -t includeos/includeos-qemu:0.10.0.1 -f Dockerfile.qemu .
+$ docker build -t includeos/includeos-grubify:0.10.0.1 -f Dockerfile.grubify .
 ```
 
 ## Using the Docker image to build your service
@@ -16,7 +16,7 @@ $ docker build -t includeos/includeos-grubify:0.10.0.0 -f Dockerfile.grubify .
 ```
 $ cd <my-super-cool-service>
 $ mkdir build &6 cd build
-$ docker run --rm -v $(dirname $PWD):/service includeos/includeos-build:0.10.0.0
+$ docker run --rm -v $(dirname $PWD):/service includeos/includeos-build:0.10.0.1
 ```
 
 ## Running a very basic sanity test of your service image
@@ -24,7 +24,7 @@ $ docker run --rm -v $(dirname $PWD):/service includeos/includeos-build:0.10.0.0
 Don't have a hypervisor installed? No problem? Run your service inside QEMU in a Docker container:
 
 ```
-$ docker run --rm -v $(PWD):/service/build includeos/includeos-qemu:0.10.0.0 <image_name>
+$ docker run --rm -v $(PWD):/service/build includeos/includeos-qemu:0.10.0.1 <image_name>
 ```
 
 (If the service is not designed to exit on its own, the container must be stopped with `docker stop`.)
@@ -34,5 +34,5 @@ $ docker run --rm -v $(PWD):/service/build includeos/includeos-qemu:0.10.0.0 <im
 On macOS, the `boot -g` option to add a GRUB bootloader is not available. Instead, you can use the `includeos-grubify` Docker image. Build your service, followed by:
 
 ```
-$ docker run --rm --privileged -v $(dirname $PWD):/service includeos/includeos-grubify:0.10.0.0 /service/build/<image_name>
+$ docker run --rm --privileged -v $(dirname $PWD):/service includeos/includeos-grubify:0.10.0.1 /service/build/<image_name>
 ```

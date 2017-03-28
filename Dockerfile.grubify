@@ -1,4 +1,4 @@
-FROM includeos/includeos-common:0.10.0.0
+FROM includeos/includeos-common:0.10.0.1
 
 USER root
 
@@ -11,4 +11,4 @@ USER ubuntu
 VOLUME /service
 WORKDIR /service
 
-ENTRYPOINT ["/usr/local/includeos/scripts/grubify.sh"]
+ENTRYPOINT ["/home/ubuntu/IncludeOS_install/includeos/scripts/grubify.sh"]
