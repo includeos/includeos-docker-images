@@ -1,0 +1,3 @@
+# Ensure shell script uses LF on Windows
+Dockerfile  eol=lf
+*.sh        eol=lf
