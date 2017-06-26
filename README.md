@@ -38,7 +38,7 @@ On macOS, the `boot -g` option to add a GRUB bootloader is not available. Instea
 $ docker run --rm --privileged -v $(dirname $PWD):/service includeos/includeos-grubify:0.10.0.1 /service/build/<image_name>
 ```
 
-## Build a tiny web server
+## Building a tiny web server
 
 Do you have some web content that you would like to serve, without having to figure out arcane Apache configuration files? Just go to the folder where your web content is located and build a bootable web server:
 

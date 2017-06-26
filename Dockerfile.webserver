@@ -7,6 +7,7 @@ CMD mkdir build && cd build && \
   export INCLUDEOS_PREFIX=/home/ubuntu/IncludeOS_install && \
   export CC=clang-3.8 && \
   export CXX=clang++-3.8 && \
+  rm -rf /home/ubuntu/IncludeOS/examples/acorn/disk1/public/* && \
   cp -a -v /public/. /home/ubuntu/IncludeOS/examples/acorn/disk1/public && \
   cmake .. && \
   make && \
