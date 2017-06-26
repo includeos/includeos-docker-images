@@ -1,0 +1,13 @@
+FROM includeos/includeos-common:0.10.0.1
+
+VOLUME /public
+WORKDIR /home/ubuntu/IncludeOS/examples/acorn
+
+CMD mkdir build && cd build && \
+  export INCLUDEOS_PREFIX=/home/ubuntu/IncludeOS_install && \
+  export CC=clang-3.8 && \
+  export CXX=clang++-3.8 && \
+  cp -a -v /public/. /home/ubuntu/IncludeOS/examples/acorn/disk1/public && \
+  cmake .. && \
+  make && \
+  cp acorn /public
