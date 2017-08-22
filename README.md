@@ -8,7 +8,7 @@ These Docker images let you try out building [IncludeOS](https://github.com/hioa
 $ docker build -t includeos/includeos-common:0.10.0.1 -f Dockerfile.common .
 $ docker build -t includeos/includeos-build:0.10.0.1 -f Dockerfile.build .
 $ docker build -t includeos/includeos-qemu:0.10.0.1 -f Dockerfile.qemu .
-$ docker build -t includeos/includeos-grubify:0.10.0.1 -f Dockerfile.grubify .
+$ docker build -t includeos/includeos-grubify:0.10.0.2 -f Dockerfile.grubify .
 $ docker build -t includeos/includeos-webserver:0.10.0.1 -f Dockerfile.webserver .
 ```
 
@@ -35,7 +35,7 @@ $ docker run --rm -v $(PWD):/service/build includeos/includeos-qemu:0.10.0.1 <im
 On macOS, the `boot -g` option to add a GRUB bootloader is not available. Instead, you can use the `includeos-grubify` Docker image. Build your service, followed by:
 
 ```
-$ docker run --rm --privileged -v $(dirname $PWD):/service includeos/includeos-grubify:0.10.0.1 /service/build/<image_name>
+$ docker run --rm --privileged -v $(dirname $PWD):/service includeos/includeos-grubify:0.10.0.2 /service/build/<image_name>
 ```
 
 ## Building a tiny web server
