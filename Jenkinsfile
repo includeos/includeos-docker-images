@@ -63,12 +63,9 @@ pipeline {
 
     stage('Clean') {
       steps {
-        script {
-          // Free up any used space
-          sudo docker system prune -f
-        }
+        sh 'sudo docker system prune -f'
       }
-
     }
+
   }
 }
