@@ -23,7 +23,7 @@ ENV INCLUDEOS_PREFIX=/home/ubuntu/IncludeOS_install
 # Triggers new build if there are changes to head
 ADD https://api.github.com/repos/hioa-cs/IncludeOS/git/refs/heads/dev version.json
 
-# TAG can be specified when building with --build-tag TAG=...
+# TAG can be specified when building with --build-arg TAG=...
 ARG TAG=15bb0ab61b59252782d9aa5fe29df5115208e638
 RUN echo "cloning $TAG"
 RUN cd ~ && pwd && \
