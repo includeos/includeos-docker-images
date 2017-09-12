@@ -1,4 +1,6 @@
-FROM includeos/includeos-common:0.10.0.1
+# PARENT can be specified when building with --build-arg PARENT=...
+ARG PARENT=includeos/includeos-common:0.10.0.1
+FROM $PARENT
 
 VOLUME /service
 WORKDIR /service
