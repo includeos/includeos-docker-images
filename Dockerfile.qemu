@@ -1,4 +1,4 @@
-FROM includeos/includeos-common:v0.11.0-rc.2
+FROM includeos/includeos-common:v0.11.0-rc.2.01
 
 VOLUME /service/build
 WORKDIR /service/build

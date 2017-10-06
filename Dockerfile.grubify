@@ -1,4 +1,4 @@
-FROM includeos/includeos-common:v0.11.0-rc.2 as base
+FROM includeos/includeos-common:v0.11.0-rc.2.01 as base
 
 FROM ubuntu:xenial
 
