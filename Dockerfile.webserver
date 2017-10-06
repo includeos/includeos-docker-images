@@ -1,4 +1,4 @@
-FROM includeos/includeos-common:0.10.0.1
+FROM includeos/includeos-common:v0.11.0-rc.2.01
 
 VOLUME /public
 WORKDIR /home/ubuntu/IncludeOS/examples/acorn
