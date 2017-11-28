@@ -27,8 +27,9 @@ pipeline {
           String HUB_ID = sh (returnStdout: true, script: "sudo docker images -q ${IMAGE_NAME}").trim()
 
           // Build with latest $INCLUDEOS_BRANCH
-          def localImg = docker.build("${IMAGE_NAME}",
-                                   "-f Dockerfile.common --build-arg TAG=${params.INCLUDEOS_BRANCH} .")
+          //def localImg = docker.build("${IMAGE_NAME}",
+          //                        "-f Dockerfile.common --build-arg TAG=${params.INCLUDEOS_BRANCH} .")
+          sh "sudo docker build -t ${IMAGE_NAME} -f Dockerfile.common --build-arg TAG=${params.INCLUDEOS_BRANCH} ."
           String BUILT_ID = sh (returnStdout: true, script: "sudo docker images -q ${IMAGE_NAME}").trim()
 
           // Compare to see if anything new was built
