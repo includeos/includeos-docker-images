@@ -41,6 +41,7 @@ USER ubuntu
 ENV INCLUDEOS_PREFIX=/home/ubuntu/IncludeOS_install
 
 COPY --from=lexer /IncludeOS /home/ubuntu/IncludeOS
+RUN sudo chown -R ubuntu:ubuntu /home/ubuntu/IncludeOS
 
 RUN cd ~ && pwd && \
   cd IncludeOS && \
