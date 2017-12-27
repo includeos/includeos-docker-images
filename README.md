@@ -25,7 +25,7 @@ $ docker run --rm -v $(dirname $PWD):/service includeos/includeos-build:v0.11.0-
 Don't have a hypervisor installed? No problem? Run your service inside QEMU in a Docker container:
 
 ```
-$ docker run --rm -v $(PWD):/service/build includeos/includeos-qemu:v0.11.0-rc.2.01 <image_name>
+$ docker run --rm -v $PWD:/service/build includeos/includeos-qemu:v0.11.0-rc.2.01 <image_name>
 ```
 
 (If the service is not designed to exit on its own, the container must be stopped with `docker stop`.)
