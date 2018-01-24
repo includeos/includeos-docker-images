@@ -1,11 +1,12 @@
 # PARENT can be specified when building with --build-arg PARENT=...
-ARG PARENT=includeos/includeos-common:v0.12.0-rc.1
+ARG PARENT=includeos/includeos-common:v0.12.0-rc.2.0
 FROM $PARENT
 
 VOLUME /service
 WORKDIR /service
 
 CMD cd build && \
+  cp /home/ubuntu/IncludeOS_install/chainloader /service/build/chainloader && \
   export INCLUDEOS_PREFIX=/home/ubuntu/IncludeOS_install && \
   export CC=clang-3.8 && \
   export CXX=clang++-3.8 && \
