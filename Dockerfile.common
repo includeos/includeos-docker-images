@@ -24,7 +24,7 @@ ENV INCLUDEOS_PREFIX=/home/ubuntu/IncludeOS_install
 ADD https://api.github.com/repos/hioa-cs/IncludeOS/git/refs/heads/dev version.json
 
 # TAG can be specified when building with --build-arg TAG=...
-ARG TAG=v0.11.0-rc.2
+ARG TAG=v0.12.0-rc.2
 RUN echo "cloning $TAG"
 RUN cd ~ && pwd && \
   git clone https://github.com/hioa-cs/IncludeOS.git && \
