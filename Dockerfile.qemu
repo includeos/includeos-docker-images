@@ -1,6 +1,6 @@
-FROM includeos/includeos-common:v0.12.0-rc.1
+FROM includeos/includeos-common:v0.12.0-rc.2.0
 
 VOLUME /service/build
 WORKDIR /service/build
 
-ENTRYPOINT ["qemu-system-i386", "-nographic", "-smp", "1", "-m", "128", "-net", "nic,model=virtio", "-net", "user", "-kernel"]
+ENTRYPOINT ["qemu-system-x86_64", "-nographic", "-smp", "1", "-m", "128", "-net", "nic,model=virtio", "-net", "user", "-kernel", "./chainloader", "-initrd"]
