@@ -1,5 +1,5 @@
 # PARENT can be specified when building with --build-arg PARENT=...
-ARG PARENT=includeos/includeos-common:v0.12.0-rc.1
+ARG PARENT=includeos/includeos-common:v0.12.0-rc.2.0
 FROM $PARENT
 
 VOLUME /public
