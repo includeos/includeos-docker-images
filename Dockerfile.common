@@ -36,3 +36,6 @@ RUN cd ~ && pwd && \
 RUN cd ~ && pwd && \
   cd IncludeOS && \
   ./install.sh -n
+
+COPY entrypoint.sh .
+ENTRYPOINT ["/entrypoint.sh"]

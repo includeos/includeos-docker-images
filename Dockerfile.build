@@ -6,9 +6,6 @@ VOLUME /service
 WORKDIR /service
 
 CMD cd build && \
-  cp /home/ubuntu/IncludeOS_install/chainloader /service/build/chainloader && \
-  export INCLUDEOS_PREFIX=/home/ubuntu/IncludeOS_install && \
-  export CC=clang-3.8 && \
-  export CXX=clang++-3.8 && \
+  cp $(find ~/IncludeOS_install -name chainloader) /service/build/chainloader && \
   cmake .. && \
   make
