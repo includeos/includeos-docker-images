@@ -53,6 +53,8 @@ RUN cd ~ && pwd && \
   cd IncludeOS && \
   ./install.sh -n
 
+RUN git -C /root/IncludeOS describe > /ios_version.txt
+
 ###########################
 FROM base as build
 
@@ -68,6 +70,7 @@ RUN apt-get update && apt-get -y install \
 
 COPY --from=source-build /usr/local/includeos /usr/local/includeos/
 COPY --from=source-build /root/IncludeOS/etc/install_dependencies_linux.sh /
+COPY --from=source-build /ios_version.txt /
 COPY entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
 
