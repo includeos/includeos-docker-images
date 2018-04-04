@@ -72,7 +72,11 @@ RUN apt-get update && apt-get -y install \
 COPY --from=base /usr/local/includeos/scripts/grubify.sh /home/ubuntu/IncludeOS_install/includeos/scripts/grubify.sh
 
 RUN addgroup --gid 1000 docker && \
-    adduser --uid 1000 --ingroup docker --home /home/docker --shell /bin/sh --disabled-password --gecos "" docker
+    adduser --uid 1000 --ingroup docker --home /home/docker --shell /bin/sh --disabled-password --gecos "" docker && \
+    usermod -aG sudo docker && \
+    sed -i.bkp -e \
+      's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' \
+      /etc/sudoers
 
 RUN USER=docker && \
     GROUP=docker && \
