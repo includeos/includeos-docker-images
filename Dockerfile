@@ -14,6 +14,8 @@ ADD https://api.github.com/repos/hioa-cs/IncludeOS/git/refs/heads/dev version.js
 # TAG can be specified when building with --build-arg TAG=...
 ARG TAG=v0.12.0-rc.3
 RUN echo "cloning $TAG"
+LABEL dockerfile.version=01 \
+      includeos.version=$TAG
 RUN cd ~ && pwd && \
   git clone https://github.com/hioa-cs/IncludeOS.git && \
   cd IncludeOS && \
@@ -35,7 +37,9 @@ RUN apt-get update && apt-get -y install \
     curl \
     python-pip \
     && rm -rf /var/lib/apt/lists/* \
-    && pip install pystache antlr4-python2-runtime
+    && pip install pystache antlr4-python2-runtime && \
+    apt-get remove -y python-pip && \
+    apt autoremove -y
 
 # Add fixuid to change permissions for bind-mounts. Set uid to same as host with -u <uid>:<guid>
 RUN addgroup --gid 1000 docker && \
