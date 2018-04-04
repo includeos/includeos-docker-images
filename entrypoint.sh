@@ -1,6 +1,6 @@
 #!/bin/bash
 
-eval $( fixuid )
+eval $( fixuid &> /dev/null )
 
 pushd / > /dev/null
 if version=$(grep -oP 'CLANG_VERSION_MIN_REQUIRED="\K[^"]+' install_dependencies_linux.sh); then :
