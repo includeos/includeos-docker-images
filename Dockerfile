@@ -91,3 +91,22 @@ RUN apt-get update && apt-get -y install \
 COPY --from=source-build /usr/local/includeos/scripts/grubify.sh /home/ubuntu/IncludeOS_install/includeos/scripts/grubify.sh
 
 ENTRYPOINT ["fixuid", "/home/ubuntu/IncludeOS_install/includeos/scripts/grubify.sh"]
+
+###############################
+FROM build as webserver
+
+RUN apt-get update && apt-get -y install git \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --from=source-build /root/IncludeOS/examples/acorn /acorn
+
+WORKDIR /acorn
+
+COPY entrypoint.sh /
+ENTRYPOINT ["/entrypoint.sh"]
+CMD mkdir build && cd build && \
+  rm -rf /acorn/disk1/public/* && \
+  cp -a -v /public/. /acorn/disk1/public && \
+  cmake .. && \
+  make && \
+  cp acorn /public
