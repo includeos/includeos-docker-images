@@ -52,3 +52,10 @@ Do you have some web content that you would like to serve, without having to fig
 $ docker build --build-arg TAG=v0.12.0-rc.3 --target=webserver -t includeos/webserver:v0.12.0-rc.3.01 .
 docker run --rm -v $PWD:/public includeos/webserver:v0.12.0-rc.3.01
 ```
+
+## FAQ
+### Specify user field to prevent permissions errors
+When using bind mounts in docker there are potential errors with user permissions of the files that are mounted. This has been seen on linux systems where a non default uid/gid was used. To work around this we added [Fixuid](https://github.com/boxboat/fixuid) to the build and grubify images. This ensures that the build/grubify container has the correct user permissions to add/modify the required mounted files. If user is not specified then the docker containers use the root user. To specify user add your uid/gid to the docker options:
+```
+--user $(id -u):$(id -g)
+```
