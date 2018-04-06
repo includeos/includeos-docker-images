@@ -15,7 +15,7 @@ When building the docker image there are a few options available:
 The docker tags in use for these images are:
 ```
 <org>/<service>:<IncludeOS_Tag>.<Dockerfile version>
-includeos/build:v0.12.0-rc.3.01
+includeos/build:v0.12.0-rc.3.1
 ```
 For every change made to the dockerfile the corresponding tag is incremented.
 

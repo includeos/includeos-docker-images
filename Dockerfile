@@ -23,7 +23,7 @@ RUN USER=docker && \
 # TAG can be specified when building with --build-arg TAG=..., this is redeclared in the source-build stage
 ARG TAG=v0.12.0-rc.3
 ENV TAG=$TAG
-LABEL dockerfile.version=01 \
+LABEL dockerfile.version=1 \
       includeos.version=$TAG
 WORKDIR /service
 
