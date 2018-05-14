@@ -7,7 +7,8 @@
 eval $( fixuid &> /dev/null )
 
 pushd / > /dev/null
-if version=$(grep -oP 'CLANG_VERSION_MIN_REQUIRED="\K[^"]+' install_dependencies_linux.sh); then :
+if version=$(grep -oP 'CLANG_VERSION_MIN_REQUIRED="\K[^"]+' use_clang_version.sh); then :
+elif version=$(grep -oP 'CLANG_VERSION_MIN_REQUIRED="\K[^"]+' install_dependencies_linux.sh); then :
 elif version=$(grep -oP 'CLANG_VERSION="\K[^"]+' install_dependencies_linux.sh); then :
 else version=3.8
 fi
