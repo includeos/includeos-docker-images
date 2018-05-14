@@ -3,7 +3,12 @@ FROM ubuntu:xenial as base
 RUN apt-get update && apt-get -y install \
     sudo \
     curl \
+    locales \
     && rm -rf /var/lib/apt/lists/*
+RUN locale-gen en_US.UTF-8
+ENV LANG=en_US.UTF-8 \
+    LANGUAGE=en_US:en \
+    LC_ALL=en_US.UTF-8
 
 # Add fixuid to change permissions for bind-mounts. Set uid to same as host with -u <uid>:<guid>
 RUN addgroup --gid 1000 docker && \
@@ -19,6 +24,8 @@ RUN USER=docker && \
     chmod 4755 /usr/local/bin/fixuid && \
     mkdir -p /etc/fixuid && \
     printf "user: $USER\ngroup: $GROUP\n" > /etc/fixuid/config.yml
+
+RUN echo "LANG=C.UTF-8" > /etc/default/locale
 
 # TAG can be specified when building with --build-arg TAG=..., this is redeclared in the source-build stage
 ARG TAG=v0.12.0-rc.3
