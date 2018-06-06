@@ -75,14 +75,13 @@ RUN apt-get update && apt-get -y install \
     apt-get remove -y python-pip && \
     apt autoremove -y
 
-USER docker:docker
-COPY --from=source-build --chown=docker:docker /usr/local/includeos /usr/local/includeos/
-COPY --from=source-build --chown=docker:docker /usr/local/bin/boot /usr/local/bin/boot
-COPY --from=source-build --chown=docker:docker /root/IncludeOS/etc/install_dependencies_linux.sh /
-COPY --from=source-build --chown=docker:docker /root/IncludeOS/etc/use_clang_version.sh /
-COPY --from=source-build --chown=docker:docker /root/IncludeOS/lib/uplink/starbase /root/IncludeOS/lib/uplink/starbase/
-COPY --from=source-build --chown=docker:docker /ios_version.txt /
-COPY entrypoint.sh /
+COPY --from=source-build  /usr/local/includeos /usr/local/includeos/
+COPY --from=source-build  /usr/local/bin/boot /usr/local/bin/boot
+COPY --from=source-build  /root/IncludeOS/etc/install_dependencies_linux.sh /
+COPY --from=source-build  /root/IncludeOS/etc/use_clang_version.sh /
+COPY --from=source-build  /root/IncludeOS/lib/uplink/starbase /root/IncludeOS/lib/uplink/starbase/
+COPY --from=source-build  /ios_version.txt /
+COPY  entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
 
 CMD mkdir -p build && \
