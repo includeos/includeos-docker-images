@@ -23,7 +23,7 @@ RUN USER=docker && \
     chown root:root /usr/local/bin/fixuid && \
     chmod 4755 /usr/local/bin/fixuid && \
     mkdir -p /etc/fixuid && \
-    printf "user: $USER\ngroup: $GROUP\n" > /etc/fixuid/config.yml
+    printf "user: $USER\ngroup: $GROUP\npaths:\n  - /service\n" > /etc/fixuid/config.yml
 
 RUN echo "LANG=C.UTF-8" > /etc/default/locale
 
