@@ -1,4 +1,4 @@
-FROM includeos/includeos-common:v0.12.0-rc.2.0
+FROM ubuntu:xenial
 
 VOLUME /service/build
 WORKDIR /service/build
