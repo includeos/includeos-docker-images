@@ -66,6 +66,7 @@ RUN git -C /root/IncludeOS describe > /ios_version.txt
 FROM base as build
 
 RUN apt-get update && apt-get -y install \
+    git \
     clang-5.0 \
     cmake \
     nasm \
