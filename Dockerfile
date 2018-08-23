@@ -60,7 +60,7 @@ RUN cd ~ && pwd && \
   cd IncludeOS && \
   ./install.sh -n
 
-RUN git -C /root/IncludeOS describe > /ios_version.txt
+RUN git -C /root/IncludeOS describe --tags > /ios_version.txt
 
 ###########################
 FROM base as build
