@@ -28,10 +28,13 @@ RUN USER=docker && \
 RUN echo "LANG=C.UTF-8" > /etc/default/locale
 
 # TAG can be specified when building with --build-arg TAG=..., this is redeclared in the source-build stage
-ARG TAG=v0.12.0-rc.3
-ENV TAG=$TAG
+ARG BRANCH=dev
+ARG REPO=hioa-cs
+ENV BRANCH=$BRANCH
+ENV REPO=$REPO
+
 LABEL dockerfile.version=1 \
-      includeos.version=$TAG
+      includeos.version=$BRANCH
 WORKDIR /service
 
 #########################
@@ -45,14 +48,14 @@ RUN apt-get update && apt-get -y install \
     && rm -rf /var/lib/apt/lists/*
 
 # Triggers new build if there are changes to head
-ADD https://api.github.com/repos/hioa-cs/IncludeOS/git/refs/heads/dev version.json
+#ADD https://api.github.com/repos/$REPO/IncludeOS/git/refs/heads/$BRANCH version.json
 
-RUN echo "cloning $TAG"
+RUN echo "cloning $BRANCH"
 
 RUN cd ~ && pwd && \
-  git clone https://github.com/hioa-cs/IncludeOS.git && \
+  git clone https://github.com/$REPO/IncludeOS.git && \
   cd IncludeOS && \
-  git checkout $TAG && \
+  git checkout $BRANCH && \
   git submodule update --init --recursive && \
   git fetch --tags
 
