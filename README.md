@@ -1,3 +1,5 @@
+# DEPRECEATED
+The dockerfile for IncludeOS has been moved to the [IncludeOS repository](https://github.com/hioa-cs/IncludeOS). This so it can easily stay in sync with changes to IncludeOS. 
 
 # Docker images
 
